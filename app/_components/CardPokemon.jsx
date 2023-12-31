@@ -1,34 +1,24 @@
+import tipo_cores from './tipos_cores.json'
+
 export default ({pokemon}) => {
 
-    var tipo_dict = {
-        bug:        "lime-600",
-        dark:       "indigo-950",
-        dragon:     "indigo-600",
-        electric:   "yellow-500",
-        fairy:      "pink-300",
-        fighting:   "yellow-800",
-        fire:       "red-600",
-        flying:     "blue-300",
-        ghost:      "indigo-300",
-        grass:      "green-400",
-        ground:     "from-amber-300",
-        ice:        "cyan-200",
-        normal:     "stone-300",
-        poison:     "violet-700",
-        psychic:    "fuchsia-500",
-        rock:       "yellow-700",
-        steel:      "stone-600",
-        water:      "blue-500",
+    var styleMonoType = {
+        backgroundColor: tipo_cores[pokemon.types[0].type.name],
     }
 
-    const gradient = pokemon.types.length > 1;
-    const bg_color = gradient ? 'bg-gradient-to-br from-35% to-65% from-' + tipo_dict[pokemon.types[0].type.name] + ' to-' + tipo_dict[pokemon.types[1].type.name] : 'bg-' + tipo_dict[pokemon.types[0].type.name]
+    var styleDuoType = {
+        background: `linear-gradient(135deg, 
+            ${tipo_cores[pokemon.types[0].type.name]} 35%, 
+            ${tipo_cores[pokemon.types[1]?.type.name]} 65%
+            )`
+    };
+
+    const monoType = pokemon.types.length === 1;
 
     return (
         <div className="bg-yellow-400 p-2 rounded-md">
-            <img className={
-                    'object-cover h-48 w-full mb-2 rounded-md ' + bg_color
-                }
+            <img className={'object-cover h-48 w-full mb-2 rounded-md'}
+                style={monoType ? styleMonoType : styleDuoType}
                 src={pokemon.sprites.front_default}
                 alt={pokemon.name} />
             <div className="bg-white py-1 px-2 rounded-md">
@@ -40,7 +30,6 @@ export default ({pokemon}) => {
                     ))}</div>
                 </div>
             </div>
-                
         </div>
     )
 }

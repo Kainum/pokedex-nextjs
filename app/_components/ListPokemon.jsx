@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 
 export default () => {
     
-    const [page, setPage] = useState(0);
+    const [lastSearched, setLastSearched] = useState(0);
 
     const [pokemons, setPokemons] = useState([]);
 
 	async function getPokes (qtd) {
-		const result = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${qtd}&offset=${page*qtd}`);
+		const result = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${qtd}&offset=${lastSearched}`);
 		const data = (await result.json()).results;
 		const list = [];
 
@@ -20,7 +20,7 @@ export default () => {
         }
         
         setPokemons([...pokemons, ...list])
-        setPage(page + 1)
+        setLastSearched(lastSearched + qtd)
 	}
 	
 
@@ -29,21 +29,17 @@ export default () => {
 	},[pokemons])
 
 	useEffect(() => {
-		// async function getList () {
-		// 	await getPokes(30, 0)
-		// }
-		// getList()
         getPokes(30, 0)
 	},[])
 
     return (
         <>
-            <button onClick={() => getPokes(30)}>aumentar</button>
             <div className="sm:p-10 grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
-                {pokemons.map((item, index) =>(
-                    <CardPokemon key={index} pokemon={item}></CardPokemon>
+                {pokemons.map((pkm) =>(
+                    <CardPokemon key={pkm.id} pokemon={pkm}></CardPokemon>
                 ))}
             </div>
+            <button onClick={() => getPokes(30)}>aumentar</button>
         </>
     )
 }
