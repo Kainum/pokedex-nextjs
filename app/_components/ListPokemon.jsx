@@ -22,11 +22,6 @@ export default () => {
         setPokemons([...pokemons, ...list])
         setLastSearched(lastSearched + qtd)
 	}
-	
-
-	useEffect(() => {
-		console.log(pokemons)
-	},[pokemons])
 
 	useEffect(() => {
         getPokes(30, 0)
