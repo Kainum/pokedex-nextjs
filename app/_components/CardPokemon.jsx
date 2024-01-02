@@ -1,3 +1,5 @@
+import './pokemon.css';
+
 export default ({pokemon}) => {
 
     var type_1 = pokemon.types[0].type.name;
@@ -14,9 +16,9 @@ export default ({pokemon}) => {
                 src={pokemon.sprites.front_default}
                 alt={pokemon.name} />
             <div className="bg-white py-1 px-2 rounded-md">
-                <p className="mb-2 text-xl capitalize">{pokemon.name}</p>
+                <p className="mb-2 text-3xl capitalize font-pixel">{pokemon.name}</p>
                 <div className="flex justify-between">
-                    <span className="my-auto">nº {pokemon.id}</span>
+                    <span className="my-auto font-pixel text-2xl">nº {pokemon.id}</span>
                     <div className="h-12 grid">{pokemon.types.map((pkm_type, index) => (
                         <img key={index} className="h-6 block my-auto" src={`/assets/tipos_pokemon/${pkm_type.type.name}.png`} alt={`tipo ${pkm_type.type.name}`} />
                     ))}</div>
