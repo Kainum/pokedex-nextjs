@@ -33,6 +33,19 @@ const config: Config = {
         "type_steel":      "#808080",
         "type_water":      "#1E90FF",
       },
+      animation: {
+        'focus': 'focus .75s forwards',
+      },
+      keyframes: {
+        focus: {
+          '50%, 100%': {
+            transform: 'scale(1.2)',
+          },
+        },
+      },
+      screens: {
+        'xxs': '400px', // min-width
+      }
     },
   },
   safelist: [
