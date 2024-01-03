@@ -3,3 +3,7 @@
 .font-pixel {
     font-family: 'VT323', monospace;
 }
+
+.pixelated {
+    image-rendering: pixelated;
+}

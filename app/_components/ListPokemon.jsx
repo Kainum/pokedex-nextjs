@@ -42,7 +42,8 @@ export default () => {
     return (
         <>
             <div className="grid gap-4
-                xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+                xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2
+                mb-8">
                 {pokemons.map((pkm) =>(
                     <CardPokemon key={pkm.id} pokemon={pkm}></CardPokemon>
                 ))}

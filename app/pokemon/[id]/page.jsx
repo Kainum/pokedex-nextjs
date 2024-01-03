@@ -1,11 +1,10 @@
+import ProfilePokemon from './_components/ProfilePokemon'
+
 export default ({ params }) => {
-
-
-
 
     return (
         <>
-            <h1>Pokemon: {params.id}</h1>
+            <ProfilePokemon id={params.id}></ProfilePokemon>
         </>
     )
 }
