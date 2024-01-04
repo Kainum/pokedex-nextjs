@@ -20,6 +20,10 @@ export default async ({id}) => {
     const pkm_specie = await (await fetch(pokemon.species.url)).json();
     const flavor_text = pkm_specie.flavor_text_entries[0].flavor_text.replace('\f', ' ');
 
+    const pkm_genera = pkm_specie.genera.filter((item) => {
+        return item.language.name == 'en'
+    })[0].genus;
+
     return (
         <>
             <div className="grid container mx-auto py-6
@@ -33,7 +37,10 @@ export default async ({id}) => {
                 <div className='col-span-3 h-full grid gap-y-6'>
                     <div className="bg-white rounded-md ring-inset ring-4
                         md:px-10 xxs:px-5 py-5">
-                        <h1 className='capitalize font-pixel text-6xl mb-6'>{pokemon.name}</h1>
+                        <p className='capitalize font-pixel mb-6'>
+                            <span className='text-6xl sm:inline xxs:block'>{pokemon.name} </span>
+                            <span className='text-4xl '>"{pkm_genera}"</span>
+                        </p>
                         <p className='flex justify-between font-pixel text-3xl mb-6'>
                             <span>Peso: {pokemon.weight / 10}kg</span>
                             <span>Altura: {pokemon.height / 10}m</span>

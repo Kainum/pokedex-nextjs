@@ -7,8 +7,7 @@ export default function Home() {
 	return (
 		<>
 			<Script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js" />
-			<div className="container mx-auto">
-				<h1 className="text-center">POKEDEX</h1>
+			<div className="container mx-auto py-6">
 				<ListPokemon></ListPokemon>
 			</div>
 		</>

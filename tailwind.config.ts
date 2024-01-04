@@ -32,6 +32,10 @@ const config: Config = {
         "type_rock":       "#8B4513",
         "type_steel":      "#808080",
         "type_water":      "#1E90FF",
+
+
+
+        "red-primary":     "#EE1B24",
       },
       animation: {
         'focus': 'focus .75s forwards',
