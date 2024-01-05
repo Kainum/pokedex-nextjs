@@ -58,7 +58,9 @@ export default () => {
                 </button>
             }
             {updating &&
-                <p className="text-center text-white font-bold">Carregando...</p>
+                <div className="flex justify-center">
+                    <p className="text-white bg-red-primary font-bold px-4 py-1 border-2 border-black rounded-md">Carregando...</p>
+                </div>
             }
         </>
     )
